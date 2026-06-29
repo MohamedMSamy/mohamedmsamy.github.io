@@ -9,10 +9,8 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#0a0a0a;--bg3:#1a1a1a;--accent:#e8ff6b;--accent2:#6bffd4;--text:#f0ede6;--muted:#888880;--border:rgba(255,255,255,0.08);--tag-bg:rgba(232,255,107,0.1);--tag-text:#c8df50}
 html{scroll-behavior:smooth}
-body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;}
+body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
 .container{max-width:1100px;margin:0 auto;padding:0 1.25rem}
-
-/* NAV */
 nav{padding:1rem 0;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);z-index:100}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem}
 .nav-logo{font-size:12px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);font-family:'DM Mono',monospace;flex-shrink:0}
@@ -21,8 +19,6 @@ nav{padding:1rem 0;border-bottom:1px solid var(--border);position:sticky;top:0;b
 .nav-links a:hover{color:var(--text)}
 .nav-cv{font-size:11px!important;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#0a0a0a!important;background:var(--accent);padding:0.35rem 0.85rem;border-radius:3px}
 .nav-cv:hover{background:#d4e855!important}
-
-/* HERO */
 .hero{padding:4rem 0 3rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end}
 .hero-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1.25rem}
 .hero h1{font-size:clamp(2.2rem,5vw,4.5rem);font-weight:800;line-height:1.0;letter-spacing:-0.03em}
@@ -39,38 +35,46 @@ nav{padding:1rem 0;border-bottom:1px solid var(--border);position:sticky;top:0;b
 .btn-outline:hover{border-color:var(--text)}
 .btn-cv{background:transparent;color:var(--accent2);border:1px solid rgba(107,255,212,0.3)}
 .btn-cv:hover{background:rgba(107,255,212,0.06)}
-
-/* SECTIONS */
 section{padding:3.5rem 0;border-top:1px solid var(--border)}
 .section-header{display:flex;align-items:baseline;gap:1.25rem;margin-bottom:2.5rem}
 .section-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:0.15em}
 .section-title{font-size:1.5rem;font-weight:700}
-
-/* PROJECT GRID */
-.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);grid-auto-rows:1fr}
-.project-card{background:var(--bg);padding:1.75rem 1.75rem 2.25rem;transition:background 0.25s}
+.projects-grid{display:grid;grid-template-columns:1fr;gap:2px;background:var(--border)}
+.project-card{background:var(--bg);padding:2.25rem 2rem;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 3rem;align-items:center;transition:background 0.25s}
 .project-card:hover{background:var(--bg3)}
-.project-card.featured{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
+.card-body{min-width:0}
+.card-media{min-width:0}
+.project-card.featured{border-left:3px solid var(--accent);background:rgba(232,255,107,0.018);grid-template-rows:auto 1fr}
+.project-card.featured:hover{background:rgba(232,255,107,0.03)}
+.featured-banner{grid-column:1/-1;margin:-2.25rem -2rem 2rem;padding:0.55rem 2rem;background:rgba(232,255,107,0.09);border-bottom:1px solid rgba(232,255,107,0.18);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:0.65rem}
+.fb-line{display:block;height:1px;background:currentColor;opacity:0.35}
+.fb-line.grow{flex:1}
+.fb-line.short{width:14px;flex:none}
 .card-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;flex-wrap:wrap;gap:0.5rem}
 .card-index,.card-year{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted)}
 .card-badge{font-family:'DM Mono',monospace;font-size:10px;padding:0.2rem 0.6rem;background:rgba(232,255,107,0.15);color:var(--accent);border-radius:2px;letter-spacing:0.05em}
-.card-title{font-size:1.1rem;font-weight:700;margin-bottom:0.65rem;line-height:1.2}
+.card-title{font-size:1.15rem;font-weight:700;margin-bottom:0.65rem;line-height:1.25}
 .card-desc{font-size:0.85rem;color:var(--muted);line-height:1.75}
 .card-tags{display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:1.25rem}
 .tag{font-family:'DM Mono',monospace;font-size:9px;padding:0.2rem 0.55rem;background:var(--tag-bg);color:var(--tag-text);border-radius:2px;letter-spacing:0.05em}
-.card-img{width:100%;max-height:400px;aspect-ratio:9/16;object-fit:cover;border-radius:4px;margin-top:1.25rem;display:block}
-.card-img-horiz{width:100%;min-height:400px;aspect-ratio:16/9;object-fit:cover;border-radius:4px;margin-top:1.25rem;display:block}
-.card-img-contain{width:100%;height:auto;max-height:600px;object-fit:contain;border-radius:4px;margin-top:1.25rem;display:block;background:var(--bg3)}
-
-/* SKILLS */
-.skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
+.carousel{position:relative}
+.carousel-track{position:relative;border-radius:4px;overflow:hidden;background:var(--bg3)}
+.carousel-img{display:none;width:100%;aspect-ratio:3/4;object-fit:contain}
+.carousel-img.active{display:block}
+.carousel-btn{display:none;position:absolute;top:50%;transform:translateY(-50%);background:rgba(10,10,10,0.75);color:var(--text);border:1px solid rgba(255,255,255,0.12);width:32px;height:32px;border-radius:2px;cursor:pointer;font-size:20px;line-height:1;align-items:center;justify-content:center;z-index:2;transition:background 0.18s;font-family:inherit;padding:0}
+.carousel-btn:hover{background:rgba(10,10,10,0.96)}
+.carousel.has-multiple .carousel-btn{display:flex}
+.carousel-prev{left:8px}
+.carousel-next{right:8px}
+.carousel-dots{display:flex;justify-content:center;gap:6px;margin-top:10px;min-height:16px}
+.carousel-dot{width:6px;height:6px;border-radius:50%;background:var(--muted);cursor:pointer;transition:background 0.18s;border:none;padding:0;display:block;flex-shrink:0}
+.carousel-dot.active{background:var(--accent)}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
 .skill-group{background:var(--bg);padding:1.5rem}
 .skill-group-title{font-family:'DM Mono',monospace;font-size:9px;color:var(--accent);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.9rem}
 .skill-list{list-style:none}
 .skill-list li{font-size:0.85rem;color:var(--muted);padding:0.3rem 0;border-bottom:1px solid var(--border);line-height:1.4}
 .skill-list li:last-child{border-bottom:none}
-
-/* CONTACT */
 .contact-row{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
 .contact-headline{font-size:clamp(1.6rem,3vw,2.5rem);font-weight:800;line-height:1.1;letter-spacing:-0.02em}
 .contact-headline span{color:var(--accent)}
@@ -82,19 +86,12 @@ section{padding:3.5rem 0;border-top:1px solid var(--border)}
 .avail-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent2);margin-right:0.5rem;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
 .avail-text{font-size:12px;color:var(--accent2)}
-
 footer{padding:1.5rem 0;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem}
 footer span{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted)}
-
-/* ── MOBILE ── */
 @media(max-width:640px){
   .container{padding:0 1rem}
-
-  /* nav */
   .nav-links a:not(.nav-cv){display:none}
   .nav-links{gap:0.75rem}
-
-  /* hero */
   .hero{grid-template-columns:1fr;gap:2rem;padding:2.5rem 0 2rem}
   .hero-right{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0}
   .hero-stat{flex-direction:column;gap:0.25rem;padding:0.75rem 0.5rem;border-top:1px solid var(--border);border-right:1px solid var(--border)}
@@ -103,32 +100,22 @@ footer span{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted)}
   .hero-stat-label{font-size:9px;text-align:left}
   .cta-row{gap:0.5rem}
   .btn{padding:0.6rem 1rem;font-size:11px}
-
-  /* projects */
-  .projects-grid{grid-template-columns:1fr}
-  .project-card{padding:1.25rem 1.25rem 1.75rem}
-  .project-card.featured{grid-column:span 1;grid-template-columns:1fr;gap:1.25rem}
-  .project-card.featured .card-img-contain,
-  .project-card.featured .card-img{margin-top:0}
-
-  /* skills */
+  .project-card{grid-template-columns:1fr;gap:1.5rem;padding:1.25rem}
+  .project-card.featured{grid-template-rows:auto}
+  .featured-banner{margin:-1.25rem -1.25rem 1.5rem;padding:0.55rem 1.25rem}
   .skills-grid{grid-template-columns:1fr 1fr}
-
-  /* contact */
   .contact-row{grid-template-columns:1fr;gap:1.5rem}
-
   section{padding:2.5rem 0}
   .section-header{margin-bottom:1.75rem}
 }
-
-/* ── TABLET ── */
 @media(min-width:641px) and (max-width:900px){
   .hero{grid-template-columns:1fr;gap:2rem;padding:3.5rem 0 2.5rem}
   .hero-right{display:grid;grid-template-columns:repeat(3,1fr)}
   .hero-stat{flex-direction:column;gap:0.25rem;border-right:1px solid var(--border);padding:0.75rem 1rem}
   .hero-right .hero-stat:last-child{border-right:none}
-  .projects-grid{grid-template-columns:1fr}
-  .project-card.featured{grid-column:span 1;grid-template-columns:1fr}
+  .project-card{grid-template-columns:1fr;gap:1.5rem}
+  .project-card.featured{grid-template-rows:auto}
+  .featured-banner{margin:-2.25rem -2rem 2rem}
   .skills-grid{grid-template-columns:1fr 1fr}
   .contact-row{grid-template-columns:1fr}
 }
@@ -150,7 +137,7 @@ footer span{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted)}
     <div>
       <p class="hero-label">Mechatronics Engineer</p>
       <h1>Mohamed<br>Mahmoud <span>Samy</span></h1>
-      <p class="hero-desc">Building systems that bridge the physical and digital — from autonomous race vehicles and industrial automation to embedded electronics and pneumatic machines.</p>
+      <p class="hero-desc">Building systems that bridge the physical and digital — from robotic manipulators and autonomous vehicles to embedded firmware and industrial automation.</p>
       <div class="cta-row">
         <a href="#projects" class="btn btn-primary">View Projects</a>
         <a href="#contact" class="btn btn-outline">Get in Touch</a>
@@ -158,7 +145,7 @@ footer span{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted)}
       </div>
     </div>
     <div class="hero-right">
-      <div class="hero-stat"><span class="hero-stat-label">Projects Completed</span><span class="hero-stat-num">7</span></div>
+      <div class="hero-stat"><span class="hero-stat-label">Projects Completed</span><span class="hero-stat-num">8</span></div>
       <div class="hero-stat"><span class="hero-stat-label">Internships &amp; Research</span><span class="hero-stat-num">3</span></div>
       <div class="hero-stat"><span class="hero-stat-label">Certifications</span><span class="hero-stat-num">11</span></div>
     </div>
@@ -168,70 +155,174 @@ footer span{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted)}
     <div class="section-header"><span class="section-num">01</span><h2 class="section-title">Projects</h2></div>
     <div class="projects-grid">
 
+      <!-- 001 FEATURED — add more images by copying an <img class="carousel-img"> line; only the first needs class="active" -->
       <div class="project-card featured">
-        <div>
-          <div class="card-meta">
-            <span class="card-index">001</span>
-            <span class="card-badge">Current · Spring 2026</span>
-          </div>
+        <div class="featured-banner"><span class="fb-line short"></span>★&nbsp;Featured Project<span class="fb-line grow"></span></div>
+        <div class="card-body">
+          <div class="card-meta"><span class="card-index">001</span><span class="card-badge">🥈 2nd Place · 6/6 Tasks · Zero Penalties 🎉</span></div>
           <h3 class="card-title">Modular Omni-Wheel Mobile Manipulator</h3>
-          <p class="card-desc">Designing and building a fully integrated mobile manipulator for the Spring 2026 Mechatronics Omni-Challenge at Ain Shams University. The robot combines a holonomic omni-wheel base with a modular robotic arm and gripper, operating across two modes: manual wireless teleoperation for track navigation and a fully autonomous pick-and-place phase using QR code detection for color-based cube sorting into onboard bins and delivery to matching drop-off zones.<br><br>Each module is engineered as a standalone, plug-and-play subsystem with its own controller, power distribution, and standardized mechanical and electrical interfaces. The system integrates wheel encoder odometry, IMU-based heading stabilization, and a camera vision pipeline for lane detection and object classification.</p>
-          <div class="card-tags">
-            <span class="tag">Omni-Wheel Drive</span><span class="tag">Computer Vision</span><span class="tag">Autonomous Navigation</span><span class="tag">PCB Design</span><span class="tag">Modular Systems</span><span class="tag">IMU Fusion</span><span class="tag">C++</span>
+          <p class="card-desc">Built a fully integrated mobile manipulator for the Spring 2026 Mechatronics Omni-Challenge at Ain Shams University, placing 2nd overall with a perfect task score — 6 out of 6 tasks completed, zero penalties.<br><br>The robot combines a holonomic omni-wheel base with a modular 5-DOF arm and gripper, operating across two modes: manual wireless teleoperation for track navigation and a fully autonomous pick-and-place phase using QR code detection for colour-coded cube sorting and delivery to matching drop-off zones.<br><br>The system runs on three ESP32 controllers (base + arm + vision) communicating over ESP-NOW, with the ESP32-CAM and quirc library handling QR decoding and a WebSocket layer coordinating real-time inter-module state.</p>
+          <div class="card-tags"><span class="tag">ESP32 / ESP-NOW</span><span class="tag">QR Detection</span><span class="tag">WebSocket</span><span class="tag">Autonomous Pick &amp; Place</span><span class="tag">Omni-Wheel Drive</span><span class="tag">3-MCU Architecture</span><span class="tag">C++</span></div>
+        </div>
+        <div class="card-media">
+          <div class="carousel">
+            <div class="carousel-track">
+              <img class="carousel-img active" src="Images/Omni-WheelMobile.png" alt="Omni-Wheel Mobile Manipulator">
+              <img class="carousel-img" src="Images/Omni-WheelMobile2.png" alt="">
+              <img class="carousel-img" src="Images/Omni-WheelMobileResults.png" alt="">
+              <button class="carousel-btn carousel-prev">&#8249;</button>
+              <button class="carousel-btn carousel-next">&#8250;</button>
+            </div>
+            <div class="carousel-dots"></div>
           </div>
         </div>
-        <div><img class="card-img-contain" src="Images/Omni-WheelMobile.png" alt="Modular Omni-Wheel Mobile Manipulator"></div>
-		
       </div>
 
+      <!-- 002 -->
       <div class="project-card">
-        <div>
-          <div class="card-meta"><span class="card-index">002</span><span class="card-year">2025–2026</span></div>
+        <div class="card-body">
+          <div class="card-meta"><span class="card-index">002</span><span class="card-badge">MCT344 · 2026</span></div>
+          <h3 class="card-title">5-DOF Robotic Arm — Computed-Torque Control</h3>
+          <p class="card-desc">Designed and simulated a full computed-torque controller for a 5-DOF rigid-body manipulator in MATLAB/Simulink + Simscape, including trajectory planning and damped least-squares Jacobian pseudoinverse IK with active singularity detection and avoidance.</p>
+          <div class="card-tags"><span class="tag">MATLAB / Simulink</span><span class="tag">Simscape</span><span class="tag">Computed-Torque Control</span><span class="tag">Jacobian IK</span><span class="tag">Trajectory Planning</span><span class="tag">Singularity Avoidance</span></div>
+        </div>
+        <div class="card-media">
+          <div class="carousel">
+            <div class="carousel-track">
+              <img class="carousel-img active" src="Images/Robotics1.png" alt="5-DOF Robotic Arm Model">
+              <img class="carousel-img" src="Images/Robotics2.png" alt="Control Archeticture">
+              <button class="carousel-btn carousel-prev">&#8249;</button>
+              <button class="carousel-btn carousel-next">&#8250;</button>
+            </div>
+            <div class="carousel-dots"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 003 -->
+      <div class="project-card">
+        <div class="card-body">
+          <div class="card-meta"><span class="card-index">003</span><span class="card-year">2025–2026</span></div>
           <h3 class="card-title">Air-Powered Vehicle</h3>
           <p class="card-desc">Designed and manufactured a vehicle propelled solely by compressed air. Converted stored pressure energy into kinetic energy using a pneumatic drill motor and sprocket-chain torque transfer. Integrated electromagnetic braking and wireless control with 20+ metre range — within strict no-electrical-drive constraints.</p>
-          <div><img class="card-img-horiz" style="aspect-ratio:4/3;margin-top:0" src="Images/AirPoweredVehicle.png" alt="Air-powered vehicle"></div>
-		  <div class="card-tags"><span class="tag">Electro-pneumatics</span><span class="tag">Machine Design</span><span class="tag">Stress Analysis</span><span class="tag">Electromechanical</span></div>
+          <div class="card-tags"><span class="tag">Electro-pneumatics</span><span class="tag">Machine Design</span><span class="tag">Stress Analysis</span><span class="tag">Electromechanical</span></div>
+        </div>
+        <div class="card-media">
+          <div class="carousel">
+            <div class="carousel-track">
+              <img class="carousel-img active" src="Images/AirPoweredVehicle.png" alt="Air-powered vehicle">
+              <!-- <img class="carousel-img" src="Images/AirPoweredVehicle_2.png" alt=""> -->
+              <button class="carousel-btn carousel-prev">&#8249;</button>
+              <button class="carousel-btn carousel-next">&#8250;</button>
+            </div>
+            <div class="carousel-dots"></div>
+          </div>
         </div>
       </div>
 
+      <!-- 004 -->
       <div class="project-card">
-        <div class="card-meta"><span class="card-index">003</span><span class="card-year">2025</span></div>
-        <h3 class="card-title">Electropneumatic Pick-and-Place System</h3>
-        <p class="card-desc">Built a 2-DOF automation cell simulating real industrial pick-and-place. Pneumatic actuators handle motion; sensor feedback drives sequencing; Arduino manages actuation and safety logic.</p>
-        <img class="card-img" src="Images/PickandPlacePneumatic.png" alt="Pick and Place Pneumatic System">
-        <div class="card-tags"><span class="tag">Industrial Automation</span><span class="tag">Mechatronics</span><span class="tag">Arduino</span></div>
+        <div class="card-body">
+          <div class="card-meta"><span class="card-index">004</span><span class="card-year">2025</span></div>
+          <h3 class="card-title">Electropneumatic Pick-and-Place System</h3>
+          <p class="card-desc">Built a 2-DOF automation cell simulating real industrial pick-and-place. Pneumatic actuators handle motion; sensor feedback drives sequencing; Arduino manages actuation and safety logic.</p>
+          <div class="card-tags"><span class="tag">Industrial Automation</span><span class="tag">Mechatronics</span><span class="tag">Arduino</span></div>
+        </div>
+        <div class="card-media">
+          <div class="carousel">
+            <div class="carousel-track">
+              <img class="carousel-img active" src="Images/PickandPlacePneumatic.png" alt="Pick and Place Pneumatic System">
+              <!-- <img class="carousel-img" src="Images/PickandPlacePneumatic_2.png" alt=""> -->
+              <button class="carousel-btn carousel-prev">&#8249;</button>
+              <button class="carousel-btn carousel-next">&#8250;</button>
+            </div>
+            <div class="carousel-dots"></div>
+          </div>
+        </div>
       </div>
 
+      <!-- 005 -->
       <div class="project-card">
-        <div class="card-meta"><span class="card-index">004</span><span class="card-year">2025</span></div>
-        <h3 class="card-title">Portable Electrical Control Panel</h3>
-        <p class="card-desc">Wired a portable industrial panel to execute a pick-and-place sequence for a simulated robotic arm. Full relay logic, E-stop, protection circuits, and wiring standards — contactors, breakers, relays, terminals, and indicators throughout.</p>
-        <img class="card-img" src="Images/ElectricalControlPanel.png" alt="Electrical control panel">
-        <div class="card-tags"><span class="tag">Relay Logic</span><span class="tag">Industrial Wiring</span><span class="tag">PLC</span></div>
+        <div class="card-body">
+          <div class="card-meta"><span class="card-index">005</span><span class="card-year">2025</span></div>
+          <h3 class="card-title">Portable Electrical Control Panel</h3>
+          <p class="card-desc">Wired a portable industrial panel to execute a pick-and-place sequence for a simulated robotic arm. Full relay logic, E-stop, protection circuits, and wiring standards — contactors, breakers, relays, terminals, and indicators throughout.</p>
+          <div class="card-tags"><span class="tag">Relay Logic</span><span class="tag">Industrial Wiring</span><span class="tag">PLC</span></div>
+        </div>
+        <div class="card-media">
+          <div class="carousel">
+            <div class="carousel-track">
+              <img class="carousel-img active" src="Images/ElectricalControlPanel.png" alt="Electrical control panel">
+              <!-- <img class="carousel-img" src="Images/ElectricalControlPanel_2.png" alt=""> -->
+              <button class="carousel-btn carousel-prev">&#8249;</button>
+              <button class="carousel-btn carousel-next">&#8250;</button>
+            </div>
+            <div class="carousel-dots"></div>
+          </div>
+        </div>
       </div>
 
+      <!-- 006 -->
       <div class="project-card">
-        <div class="card-meta"><span class="card-index">005</span><span class="card-year">2025</span></div>
-        <h3 class="card-title">Smart Laptop Cooling Pad</h3>
-        <p class="card-desc">Designed a cooling pad with auto/manual fan control via Arduino + LM35 sensor, Bluetooth app for real-time monitoring, PCB design with trace width calculations, and temperature logging with emergency stop.</p>
-        <img class="card-img" src="Images/CoolingPad.png" alt="Smart laptop cooling pad">
-        <div class="card-tags"><span class="tag">PCB Design</span><span class="tag">Arduino</span><span class="tag">Control Systems</span></div>
+        <div class="card-body">
+          <div class="card-meta"><span class="card-index">006</span><span class="card-year">2025</span></div>
+          <h3 class="card-title">Smart Laptop Cooling Pad</h3>
+          <p class="card-desc">Designed a cooling pad with auto/manual fan control via Arduino + LM35 sensor, Bluetooth app for real-time monitoring, PCB design with trace width calculations, and temperature logging with emergency stop.</p>
+          <div class="card-tags"><span class="tag">PCB Design</span><span class="tag">Arduino</span><span class="tag">Control Systems</span></div>
+        </div>
+        <div class="card-media">
+          <div class="carousel">
+            <div class="carousel-track">
+              <img class="carousel-img active" src="Images/CoolingPad.png" alt="Smart laptop cooling pad">
+              <!-- <img class="carousel-img" src="Images/CoolingPad_2.png" alt=""> -->
+              <button class="carousel-btn carousel-prev">&#8249;</button>
+              <button class="carousel-btn carousel-next">&#8250;</button>
+            </div>
+            <div class="carousel-dots"></div>
+          </div>
+        </div>
       </div>
 
+      <!-- 007 -->
       <div class="project-card">
-        <div class="card-meta"><span class="card-index">006</span><span class="card-year">2024–2025</span></div>
-        <h3 class="card-title">Multi-Mode Object Transporting Robot</h3>
-        <p class="card-desc">Mobile robot with three navigation modes: line following + obstacle avoidance, gesture control via IMU, and Bluetooth smartphone control. Custom PCB, mechanical gripper, and modular C++ control software.</p>
-        <img class="card-img-horiz" src="Images/Multi-ModeCar.png" alt="Multi-mode robot">
-        <div class="card-tags"><span class="tag">C++</span><span class="tag">Robotics</span><span class="tag">PCB Design</span><span class="tag">Control Systems</span></div>
+        <div class="card-body">
+          <div class="card-meta"><span class="card-index">007</span><span class="card-year">2024–2025</span></div>
+          <h3 class="card-title">Multi-Mode Object Transporting Robot</h3>
+          <p class="card-desc">Mobile robot with three navigation modes: line following + obstacle avoidance, gesture control via IMU, and Bluetooth smartphone control. Custom PCB, mechanical gripper, and modular C++ control software.</p>
+          <div class="card-tags"><span class="tag">C++</span><span class="tag">Robotics</span><span class="tag">PCB Design</span><span class="tag">Control Systems</span></div>
+        </div>
+        <div class="card-media">
+          <div class="carousel">
+            <div class="carousel-track">
+              <img class="carousel-img active" src="Images/Multi-ModeCar.png" alt="Multi-mode robot">
+              <!-- <img class="carousel-img" src="Images/Multi-ModeCar_2.png" alt=""> -->
+              <button class="carousel-btn carousel-prev">&#8249;</button>
+              <button class="carousel-btn carousel-next">&#8250;</button>
+            </div>
+            <div class="carousel-dots"></div>
+          </div>
+        </div>
       </div>
 
+      <!-- 008 -->
       <div class="project-card">
-        <div class="card-meta"><span class="card-index">007</span><span class="card-year">2024–2025</span></div>
-        <h3 class="card-title">3-bit Arithmetic Logic Unit</h3>
-        <p class="card-desc">Implemented a 3-bit ALU in hardware — addition, subtraction, multiplication, AND/OR, complement, and increment. Built with full adders, gates, and multiplexers. Simulated in Proteus, validated on hardware with 7-segment display output.</p>
-        <img class="card-img-horiz" src="Images/3bitALU.png" alt="ALU Breadboard">
-        <div class="card-tags"><span class="tag">Logic Design</span><span class="tag">Proteus</span><span class="tag">Digital Circuits</span></div>
+        <div class="card-body">
+          <div class="card-meta"><span class="card-index">008</span><span class="card-year">2024–2025</span></div>
+          <h3 class="card-title">3-bit Arithmetic Logic Unit</h3>
+          <p class="card-desc">Implemented a 3-bit ALU in hardware — addition, subtraction, multiplication, AND/OR, complement, and increment. Built with full adders, gates, and multiplexers. Simulated in Proteus, validated on hardware with 7-segment display output.</p>
+          <div class="card-tags"><span class="tag">Logic Design</span><span class="tag">Proteus</span><span class="tag">Digital Circuits</span></div>
+        </div>
+        <div class="card-media">
+          <div class="carousel">
+            <div class="carousel-track">
+              <img class="carousel-img active" src="Images/3bitALU.png" alt="ALU Breadboard">
+              <!-- <img class="carousel-img" src="Images/3bitALU_2.png" alt=""> -->
+              <button class="carousel-btn carousel-prev">&#8249;</button>
+              <button class="carousel-btn carousel-next">&#8250;</button>
+            </div>
+            <div class="carousel-dots"></div>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -240,22 +331,12 @@ footer span{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted)}
   <section id="skills">
     <div class="section-header"><span class="section-num">02</span><h2 class="section-title">Skills</h2></div>
     <div class="skills-grid">
-      <div class="skill-group">
-        <p class="skill-group-title">Embedded &amp; Control</p>
-        <ul class="skill-list"><li>Embedded Systems</li><li>STM32</li><li>PLC</li><li>Control Systems</li><li>Electro-Pneumatics</li><li>ROS2</li></ul>
-      </div>
-      <div class="skill-group">
-        <p class="skill-group-title">Electronics &amp; HW</p>
-        <ul class="skill-list"><li>PCB Design</li><li>Circuit Simulation</li><li>Sensors &amp; Actuators</li><li>FPGA / VHDL</li><li>Industrial Components</li></ul>
-      </div>
-      <div class="skill-group">
-        <p class="skill-group-title">Mechanical</p>
-        <ul class="skill-list"><li>SolidWorks</li><li>CAD</li><li>Mechanical Drawings</li><li>Power Transmission</li><li>Stress Analysis</li></ul>
-      </div>
-      <div class="skill-group">
-        <p class="skill-group-title">Programming &amp; HDL</p>
-        <ul class="skill-list"><li>C / C++</li><li>Python</li><li>VHDL</li><li>MATLAB / Simulink</li><li>ROS2</li></ul>
-      </div>
+      <div class="skill-group"><p class="skill-group-title">Embedded &amp; Control</p><ul class="skill-list"><li>ESP32 / STM32</li><li>FreeRTOS</li><li>I2C / UART / SPI</li><li>Control Systems</li><li>PLC</li><li>Electro-Pneumatics</li></ul></div>
+      <div class="skill-group"><p class="skill-group-title">Robotics &amp; Simulation</p><ul class="skill-list"><li>ROS2 / MoveIt2</li><li>Isaac Sim / AutoDRIVE</li><li>Simscape / Gazebo</li><li>Trajectory Planning</li><li>Jacobian IK</li><li>MPC</li></ul></div>
+      <div class="skill-group"><p class="skill-group-title">Electronics &amp; HW</p><ul class="skill-list"><li>PCB Design</li><li>Circuit Simulation</li><li>Sensors &amp; Actuators</li><li>FPGA / VHDL</li><li>Industrial Components</li></ul></div>
+      <div class="skill-group"><p class="skill-group-title">Mechanical</p><ul class="skill-list"><li>SolidWorks</li><li>CAD</li><li>Mechanical Drawings</li><li>Power Transmission</li><li>Stress Analysis</li></ul></div>
+      <div class="skill-group"><p class="skill-group-title">Programming &amp; HDL</p><ul class="skill-list"><li>C / C++</li><li>Python</li><li>MATLAB / Simulink</li><li>VHDL</li><li>Java</li></ul></div>
+      <div class="skill-group"><p class="skill-group-title">Tools</p><ul class="skill-list"><li>Git</li><li>Linux / Ubuntu</li><li>RViz</li><li>Proteus</li><li>WebSockets</li></ul></div>
     </div>
   </section>
 
@@ -264,10 +345,7 @@ footer span{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted)}
     <div class="contact-row">
       <div>
         <h3 class="contact-headline">Let's work<br>on something <span>real.</span></h3>
-        <div class="availability">
-          <span class="avail-dot"></span>
-          <span class="avail-text">Available for internships &amp; collaborations</span>
-        </div>
+        <div class="availability"><span class="avail-dot"></span><span class="avail-text">Available for internships &amp; collaborations</span></div>
       </div>
       <div>
         <div class="contact-links">
@@ -285,5 +363,37 @@ footer span{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted)}
     <span>Mechatronics Engineering &middot; Ain Shams University</span>
   </footer>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.carousel').forEach(function (carousel) {
+    var track = carousel.querySelector('.carousel-track');
+    var imgs = Array.from(track.querySelectorAll('.carousel-img'));
+    var dotsContainer = carousel.querySelector('.carousel-dots');
+    var prevBtn = carousel.querySelector('.carousel-prev');
+    var nextBtn = carousel.querySelector('.carousel-next');
+    var current = 0;
+    if (imgs.length <= 1) return;
+    carousel.classList.add('has-multiple');
+    imgs.forEach(function (_, i) {
+      var dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Image ' + (i + 1));
+      dotsContainer.appendChild(dot);
+      dot.addEventListener('click', function () { show(i); });
+    });
+    var dots = dotsContainer.querySelectorAll('.carousel-dot');
+    function show(n) {
+      imgs[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = ((n % imgs.length) + imgs.length) % imgs.length;
+      imgs[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+    prevBtn.addEventListener('click', function () { show(current - 1); });
+    nextBtn.addEventListener('click', function () { show(current + 1); });
+  });
+});
+</script>
 </body>
 </html>
