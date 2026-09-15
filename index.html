@@ -1,399 +1,1385 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mohamed Mahmoud Samy – Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#0a0a0a;--bg3:#1a1a1a;--accent:#e8ff6b;--accent2:#6bffd4;--text:#f0ede6;--muted:#888880;--border:rgba(255,255,255,0.08);--tag-bg:rgba(232,255,107,0.1);--tag-text:#c8df50}
-html{scroll-behavior:smooth}
-body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
-.container{max-width:1100px;margin:0 auto;padding:0 1.25rem}
-nav{padding:1rem 0;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);z-index:100}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.nav-logo{font-size:12px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);font-family:'DM Mono',monospace;flex-shrink:0}
-.nav-links{display:flex;gap:1.25rem;align-items:center;flex-wrap:wrap;justify-content:flex-end}
-.nav-links a{font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:0.04em;transition:color 0.2s;white-space:nowrap}
-.nav-links a:hover{color:var(--text)}
-.nav-cv{font-size:11px!important;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#0a0a0a!important;background:var(--accent);padding:0.35rem 0.85rem;border-radius:3px}
-.nav-cv:hover{background:#d4e855!important}
-.hero{padding:4rem 0 3rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end}
-.hero-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1.25rem}
-.hero h1{font-size:clamp(2.2rem,5vw,4.5rem);font-weight:800;line-height:1.0;letter-spacing:-0.03em}
-.hero h1 span{color:var(--accent)}
-.hero-desc{margin-top:1.25rem;color:var(--muted);font-size:0.9rem;line-height:1.8}
-.hero-stat{border-top:1px solid var(--border);padding:1rem 0;display:flex;justify-content:space-between;align-items:baseline}
-.hero-stat-num{font-size:1.75rem;font-weight:700}
-.hero-stat-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;text-align:right}
-.cta-row{margin-top:2rem;display:flex;gap:0.75rem;flex-wrap:wrap}
-.btn{display:inline-block;padding:0.65rem 1.4rem;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;border-radius:3px;text-decoration:none;transition:all 0.2s;font-family:'Syne',sans-serif;cursor:pointer;white-space:nowrap}
-.btn-primary{background:var(--accent);color:#0a0a0a;border:none}
-.btn-primary:hover{background:#d4e855}
-.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border)}
-.btn-outline:hover{border-color:var(--text)}
-.btn-cv{background:transparent;color:var(--accent2);border:1px solid rgba(107,255,212,0.3)}
-.btn-cv:hover{background:rgba(107,255,212,0.06)}
-section{padding:3.5rem 0;border-top:1px solid var(--border)}
-.section-header{display:flex;align-items:baseline;gap:1.25rem;margin-bottom:2.5rem}
-.section-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:0.15em}
-.section-title{font-size:1.5rem;font-weight:700}
-.projects-grid{display:grid;grid-template-columns:1fr;gap:2px;background:var(--border)}
-.project-card{background:var(--bg);padding:2.25rem 2rem;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 3rem;align-items:center;transition:background 0.25s}
-.project-card:hover{background:var(--bg3)}
-.card-body{min-width:0}
-.card-media{min-width:0}
-.project-card.featured{border-left:3px solid var(--accent);background:rgba(232,255,107,0.018);grid-template-rows:auto 1fr}
-.project-card.featured:hover{background:rgba(232,255,107,0.03)}
-.featured-banner{grid-column:1/-1;margin:-2.25rem -2rem 2rem;padding:0.55rem 2rem;background:rgba(232,255,107,0.09);border-bottom:1px solid rgba(232,255,107,0.18);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:0.65rem}
-.fb-line{display:block;height:1px;background:currentColor;opacity:0.35}
-.fb-line.grow{flex:1}
-.fb-line.short{width:14px;flex:none}
-.card-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;flex-wrap:wrap;gap:0.5rem}
-.card-index,.card-year{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted)}
-.card-badge{font-family:'DM Mono',monospace;font-size:10px;padding:0.2rem 0.6rem;background:rgba(232,255,107,0.15);color:var(--accent);border-radius:2px;letter-spacing:0.05em}
-.card-title{font-size:1.15rem;font-weight:700;margin-bottom:0.65rem;line-height:1.25}
-.card-desc{font-size:0.85rem;color:var(--muted);line-height:1.75}
-.card-tags{display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:1.25rem}
-.tag{font-family:'DM Mono',monospace;font-size:9px;padding:0.2rem 0.55rem;background:var(--tag-bg);color:var(--tag-text);border-radius:2px;letter-spacing:0.05em}
-.carousel{position:relative}
-.carousel-track{position:relative;border-radius:4px;overflow:hidden;background:var(--bg3)}
-.carousel-img{display:none;width:100%;aspect-ratio:3/4;object-fit:contain}
-.carousel-img.active{display:block}
-.carousel-btn{display:none;position:absolute;top:50%;transform:translateY(-50%);background:rgba(10,10,10,0.75);color:var(--text);border:1px solid rgba(255,255,255,0.12);width:32px;height:32px;border-radius:2px;cursor:pointer;font-size:20px;line-height:1;align-items:center;justify-content:center;z-index:2;transition:background 0.18s;font-family:inherit;padding:0}
-.carousel-btn:hover{background:rgba(10,10,10,0.96)}
-.carousel.has-multiple .carousel-btn{display:flex}
-.carousel-prev{left:8px}
-.carousel-next{right:8px}
-.carousel-dots{display:flex;justify-content:center;gap:6px;margin-top:10px;min-height:16px}
-.carousel-dot{width:6px;height:6px;border-radius:50%;background:var(--muted);cursor:pointer;transition:background 0.18s;border:none;padding:0;display:block;flex-shrink:0}
-.carousel-dot.active{background:var(--accent)}
-.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
-.skill-group{background:var(--bg);padding:1.5rem}
-.skill-group-title{font-family:'DM Mono',monospace;font-size:9px;color:var(--accent);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.9rem}
-.skill-list{list-style:none}
-.skill-list li{font-size:0.85rem;color:var(--muted);padding:0.3rem 0;border-bottom:1px solid var(--border);line-height:1.4}
-.skill-list li:last-child{border-bottom:none}
-.contact-row{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
-.contact-headline{font-size:clamp(1.6rem,3vw,2.5rem);font-weight:800;line-height:1.1;letter-spacing:-0.02em}
-.contact-headline span{color:var(--accent)}
-.contact-links{display:flex;flex-direction:column;gap:0.75rem;margin-top:1rem}
-.contact-link{display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;color:var(--muted);text-decoration:none;transition:color 0.2s}
-.contact-link:hover{color:var(--text)}
-.contact-link-icon{width:30px;height:30px;border:1px solid var(--border);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:9px;color:var(--accent);flex-shrink:0}
-.availability{margin-top:2rem;padding:1.25rem;border:1px solid rgba(107,255,212,0.2);border-radius:4px;background:rgba(107,255,212,0.04)}
-.avail-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent2);margin-right:0.5rem;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-.avail-text{font-size:12px;color:var(--accent2)}
-footer{padding:1.5rem 0;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem}
-footer span{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted)}
-@media(max-width:640px){
-  .container{padding:0 1rem}
-  .nav-links a:not(.nav-cv){display:none}
-  .nav-links{gap:0.75rem}
-  .hero{grid-template-columns:1fr;gap:2rem;padding:2.5rem 0 2rem}
-  .hero-right{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0}
-  .hero-stat{flex-direction:column;gap:0.25rem;padding:0.75rem 0.5rem;border-top:1px solid var(--border);border-right:1px solid var(--border)}
-  .hero-right .hero-stat:last-child{border-right:none}
-  .hero-stat-num{font-size:1.4rem}
-  .hero-stat-label{font-size:9px;text-align:left}
-  .cta-row{gap:0.5rem}
-  .btn{padding:0.6rem 1rem;font-size:11px}
-  .project-card{grid-template-columns:1fr;gap:1.5rem;padding:1.25rem}
-  .project-card.featured{grid-template-rows:auto}
-  .featured-banner{margin:-1.25rem -1.25rem 1.5rem;padding:0.55rem 1.25rem}
-  .skills-grid{grid-template-columns:1fr 1fr}
-  .contact-row{grid-template-columns:1fr;gap:1.5rem}
-  section{padding:2.5rem 0}
-  .section-header{margin-bottom:1.75rem}
-}
-@media(min-width:641px) and (max-width:900px){
-  .hero{grid-template-columns:1fr;gap:2rem;padding:3.5rem 0 2.5rem}
-  .hero-right{display:grid;grid-template-columns:repeat(3,1fr)}
-  .hero-stat{flex-direction:column;gap:0.25rem;border-right:1px solid var(--border);padding:0.75rem 1rem}
-  .hero-right .hero-stat:last-child{border-right:none}
-  .project-card{grid-template-columns:1fr;gap:1.5rem}
-  .project-card.featured{grid-template-rows:auto}
-  .featured-banner{margin:-2.25rem -2rem 2rem}
-  .skills-grid{grid-template-columns:1fr 1fr}
-  .contact-row{grid-template-columns:1fr}
-}
-</style>
-</head>
-<body>
-<nav><div class="container nav-inner">
-  <span class="nav-logo">MM_SAMY</span>
-  <div class="nav-links">
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
-    <a href="cv.pdf" target="_blank" class="nav-cv">CV</a>
-  </div>
-</div></nav>
-
-<div class="container">
-  <div class="hero">
-    <div>
-      <p class="hero-label">Mechatronics Engineer</p>
-      <h1>Mohamed<br>Mahmoud <span>Samy</span></h1>
-      <p class="hero-desc">Building systems that bridge the physical and digital — from robotic manipulators and autonomous vehicles to embedded firmware and industrial automation.</p>
-      <div class="cta-row">
-        <a href="#projects" class="btn btn-primary">View Projects</a>
-        <a href="#contact" class="btn btn-outline">Get in Touch</a>
-        <a href="cv.pdf" target="_blank" class="btn btn-cv">Download CV</a>
-      </div>
-    </div>
-    <div class="hero-right">
-      <div class="hero-stat"><span class="hero-stat-label">Projects Completed</span><span class="hero-stat-num">8</span></div>
-      <div class="hero-stat"><span class="hero-stat-label">Internships &amp; Research</span><span class="hero-stat-num">3</span></div>
-      <div class="hero-stat"><span class="hero-stat-label">Certifications</span><span class="hero-stat-num">11</span></div>
-    </div>
-  </div>
-
-  <section id="projects">
-    <div class="section-header"><span class="section-num">01</span><h2 class="section-title">Projects</h2></div>
-    <div class="projects-grid">
-
-      <!-- 001 FEATURED — add more images by copying an <img class="carousel-img"> line; only the first needs class="active" -->
-      <div class="project-card featured">
-        <div class="featured-banner"><span class="fb-line short"></span>★&nbsp;Featured Project<span class="fb-line grow"></span></div>
-        <div class="card-body">
-          <div class="card-meta"><span class="card-index">001</span><span class="card-badge">🥈 2nd Place · 6/6 Tasks · Zero Penalties 🎉</span></div>
-          <h3 class="card-title">Modular Omni-Wheel Mobile Manipulator</h3>
-          <p class="card-desc">Built a fully integrated mobile manipulator for the Spring 2026 Mechatronics Omni-Challenge at Ain Shams University, placing 2nd overall with a perfect task score — 6 out of 6 tasks completed, zero penalties.<br><br>The robot combines a holonomic omni-wheel base with a modular 5-DOF arm and gripper, operating across two modes: manual wireless teleoperation for track navigation and a fully autonomous pick-and-place phase using QR code detection for colour-coded cube sorting and delivery to matching drop-off zones.<br><br>The system runs on three ESP32 controllers (base + arm + vision) communicating over ESP-NOW, with the ESP32-CAM and quirc library handling QR decoding and a WebSocket layer coordinating real-time inter-module state.</p>
-          <div class="card-tags"><span class="tag">ESP32 / ESP-NOW</span><span class="tag">QR Detection</span><span class="tag">WebSocket</span><span class="tag">Autonomous Pick &amp; Place</span><span class="tag">Omni-Wheel Drive</span><span class="tag">3-MCU Architecture</span><span class="tag">C++</span></div>
-        </div>
-        <div class="card-media">
-          <div class="carousel">
-            <div class="carousel-track">
-              <img class="carousel-img active" src="Images/Omni-WheelMobile.png" alt="Omni-Wheel Mobile Manipulator">
-              <img class="carousel-img" src="Images/Omni-WheelMobile2.png" alt="">
-              <img class="carousel-img" src="Images/Omni-WheelMobileResults.png" alt="">
-              <button class="carousel-btn carousel-prev">&#8249;</button>
-              <button class="carousel-btn carousel-next">&#8250;</button>
-            </div>
-            <div class="carousel-dots"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 002 -->
-      <div class="project-card">
-        <div class="card-body">
-          <div class="card-meta"><span class="card-index">002</span><span class="card-badge">MCT344 · 2026</span></div>
-          <h3 class="card-title">5-DOF Robotic Arm — Computed-Torque Control</h3>
-          <p class="card-desc">Designed and simulated a full computed-torque controller for a 5-DOF rigid-body manipulator in MATLAB/Simulink + Simscape, including trajectory planning and damped least-squares Jacobian pseudoinverse IK with active singularity detection and avoidance.</p>
-          <div class="card-tags"><span class="tag">MATLAB / Simulink</span><span class="tag">Simscape</span><span class="tag">Computed-Torque Control</span><span class="tag">Jacobian IK</span><span class="tag">Trajectory Planning</span><span class="tag">Singularity Avoidance</span></div>
-        </div>
-        <div class="card-media">
-          <div class="carousel">
-            <div class="carousel-track">
-              <img class="carousel-img active" src="Images/Robotics1.png" alt="5-DOF Robotic Arm Model">
-              <img class="carousel-img" src="Images/Robotics2.png" alt="Control Archeticture">
-              <button class="carousel-btn carousel-prev">&#8249;</button>
-              <button class="carousel-btn carousel-next">&#8250;</button>
-            </div>
-            <div class="carousel-dots"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 003 -->
-      <div class="project-card">
-        <div class="card-body">
-          <div class="card-meta"><span class="card-index">003</span><span class="card-year">2025–2026</span></div>
-          <h3 class="card-title">Air-Powered Vehicle</h3>
-          <p class="card-desc">Designed and manufactured a vehicle propelled solely by compressed air. Converted stored pressure energy into kinetic energy using a pneumatic drill motor and sprocket-chain torque transfer. Integrated electromagnetic braking and wireless control with 20+ metre range — within strict no-electrical-drive constraints.</p>
-          <div class="card-tags"><span class="tag">Electro-pneumatics</span><span class="tag">Machine Design</span><span class="tag">Stress Analysis</span><span class="tag">Electromechanical</span></div>
-        </div>
-        <div class="card-media">
-          <div class="carousel">
-            <div class="carousel-track">
-              <img class="carousel-img active" src="Images/AirPoweredVehicle.png" alt="Air-powered vehicle">
-              <!-- <img class="carousel-img" src="Images/AirPoweredVehicle_2.png" alt=""> -->
-              <button class="carousel-btn carousel-prev">&#8249;</button>
-              <button class="carousel-btn carousel-next">&#8250;</button>
-            </div>
-            <div class="carousel-dots"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 004 -->
-      <div class="project-card">
-        <div class="card-body">
-          <div class="card-meta"><span class="card-index">004</span><span class="card-year">2025</span></div>
-          <h3 class="card-title">Electropneumatic Pick-and-Place System</h3>
-          <p class="card-desc">Built a 2-DOF automation cell simulating real industrial pick-and-place. Pneumatic actuators handle motion; sensor feedback drives sequencing; Arduino manages actuation and safety logic.</p>
-          <div class="card-tags"><span class="tag">Industrial Automation</span><span class="tag">Mechatronics</span><span class="tag">Arduino</span></div>
-        </div>
-        <div class="card-media">
-          <div class="carousel">
-            <div class="carousel-track">
-              <img class="carousel-img active" src="Images/PickandPlacePneumatic.png" alt="Pick and Place Pneumatic System">
-              <!-- <img class="carousel-img" src="Images/PickandPlacePneumatic_2.png" alt=""> -->
-              <button class="carousel-btn carousel-prev">&#8249;</button>
-              <button class="carousel-btn carousel-next">&#8250;</button>
-            </div>
-            <div class="carousel-dots"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 005 -->
-      <div class="project-card">
-        <div class="card-body">
-          <div class="card-meta"><span class="card-index">005</span><span class="card-year">2025</span></div>
-          <h3 class="card-title">Portable Electrical Control Panel</h3>
-          <p class="card-desc">Wired a portable industrial panel to execute a pick-and-place sequence for a simulated robotic arm. Full relay logic, E-stop, protection circuits, and wiring standards — contactors, breakers, relays, terminals, and indicators throughout.</p>
-          <div class="card-tags"><span class="tag">Relay Logic</span><span class="tag">Industrial Wiring</span><span class="tag">PLC</span></div>
-        </div>
-        <div class="card-media">
-          <div class="carousel">
-            <div class="carousel-track">
-              <img class="carousel-img active" src="Images/ElectricalControlPanel.png" alt="Electrical control panel">
-              <!-- <img class="carousel-img" src="Images/ElectricalControlPanel_2.png" alt=""> -->
-              <button class="carousel-btn carousel-prev">&#8249;</button>
-              <button class="carousel-btn carousel-next">&#8250;</button>
-            </div>
-            <div class="carousel-dots"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 006 -->
-      <div class="project-card">
-        <div class="card-body">
-          <div class="card-meta"><span class="card-index">006</span><span class="card-year">2025</span></div>
-          <h3 class="card-title">Smart Laptop Cooling Pad</h3>
-          <p class="card-desc">Designed a cooling pad with auto/manual fan control via Arduino + LM35 sensor, Bluetooth app for real-time monitoring, PCB design with trace width calculations, and temperature logging with emergency stop.</p>
-          <div class="card-tags"><span class="tag">PCB Design</span><span class="tag">Arduino</span><span class="tag">Control Systems</span></div>
-        </div>
-        <div class="card-media">
-          <div class="carousel">
-            <div class="carousel-track">
-              <img class="carousel-img active" src="Images/CoolingPad.png" alt="Smart laptop cooling pad">
-              <!-- <img class="carousel-img" src="Images/CoolingPad_2.png" alt=""> -->
-              <button class="carousel-btn carousel-prev">&#8249;</button>
-              <button class="carousel-btn carousel-next">&#8250;</button>
-            </div>
-            <div class="carousel-dots"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 007 -->
-      <div class="project-card">
-        <div class="card-body">
-          <div class="card-meta"><span class="card-index">007</span><span class="card-year">2024–2025</span></div>
-          <h3 class="card-title">Multi-Mode Object Transporting Robot</h3>
-          <p class="card-desc">Mobile robot with three navigation modes: line following + obstacle avoidance, gesture control via IMU, and Bluetooth smartphone control. Custom PCB, mechanical gripper, and modular C++ control software.</p>
-          <div class="card-tags"><span class="tag">C++</span><span class="tag">Robotics</span><span class="tag">PCB Design</span><span class="tag">Control Systems</span></div>
-        </div>
-        <div class="card-media">
-          <div class="carousel">
-            <div class="carousel-track">
-              <img class="carousel-img active" src="Images/Multi-ModeCar.png" alt="Multi-mode robot">
-              <!-- <img class="carousel-img" src="Images/Multi-ModeCar_2.png" alt=""> -->
-              <button class="carousel-btn carousel-prev">&#8249;</button>
-              <button class="carousel-btn carousel-next">&#8250;</button>
-            </div>
-            <div class="carousel-dots"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 008 -->
-      <div class="project-card">
-        <div class="card-body">
-          <div class="card-meta"><span class="card-index">008</span><span class="card-year">2024–2025</span></div>
-          <h3 class="card-title">3-bit Arithmetic Logic Unit</h3>
-          <p class="card-desc">Implemented a 3-bit ALU in hardware — addition, subtraction, multiplication, AND/OR, complement, and increment. Built with full adders, gates, and multiplexers. Simulated in Proteus, validated on hardware with 7-segment display output.</p>
-          <div class="card-tags"><span class="tag">Logic Design</span><span class="tag">Proteus</span><span class="tag">Digital Circuits</span></div>
-        </div>
-        <div class="card-media">
-          <div class="carousel">
-            <div class="carousel-track">
-              <img class="carousel-img active" src="Images/3bitALU.png" alt="ALU Breadboard">
-              <!-- <img class="carousel-img" src="Images/3bitALU_2.png" alt=""> -->
-              <button class="carousel-btn carousel-prev">&#8249;</button>
-              <button class="carousel-btn carousel-next">&#8250;</button>
-            </div>
-            <div class="carousel-dots"></div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="skills">
-    <div class="section-header"><span class="section-num">02</span><h2 class="section-title">Skills</h2></div>
-    <div class="skills-grid">
-      <div class="skill-group"><p class="skill-group-title">Embedded &amp; Control</p><ul class="skill-list"><li>ESP32 / STM32</li><li>FreeRTOS</li><li>I2C / UART / SPI</li><li>Control Systems</li><li>PLC</li><li>Electro-Pneumatics</li></ul></div>
-      <div class="skill-group"><p class="skill-group-title">Robotics &amp; Simulation</p><ul class="skill-list"><li>ROS2 / MoveIt2</li><li>Isaac Sim / AutoDRIVE</li><li>Simscape / Gazebo</li><li>Trajectory Planning</li><li>Jacobian IK</li><li>MPC</li></ul></div>
-      <div class="skill-group"><p class="skill-group-title">Electronics &amp; HW</p><ul class="skill-list"><li>PCB Design</li><li>Circuit Simulation</li><li>Sensors &amp; Actuators</li><li>FPGA / VHDL</li><li>Industrial Components</li></ul></div>
-      <div class="skill-group"><p class="skill-group-title">Mechanical</p><ul class="skill-list"><li>SolidWorks</li><li>CAD</li><li>Mechanical Drawings</li><li>Power Transmission</li><li>Stress Analysis</li></ul></div>
-      <div class="skill-group"><p class="skill-group-title">Programming &amp; HDL</p><ul class="skill-list"><li>C / C++</li><li>Python</li><li>MATLAB / Simulink</li><li>VHDL</li><li>Java</li></ul></div>
-      <div class="skill-group"><p class="skill-group-title">Tools</p><ul class="skill-list"><li>Git</li><li>Linux / Ubuntu</li><li>RViz</li><li>Proteus</li><li>WebSockets</li></ul></div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="section-header"><span class="section-num">03</span><h2 class="section-title">Contact</h2></div>
-    <div class="contact-row">
-      <div>
-        <h3 class="contact-headline">Let's work<br>on something <span>real.</span></h3>
-        <div class="availability"><span class="avail-dot"></span><span class="avail-text">Available for internships &amp; collaborations</span></div>
-      </div>
-      <div>
-        <div class="contact-links">
-          <a href="mailto:mohamednessim15@gmail.com" class="contact-link"><div class="contact-link-icon">@</div>mohamednessim15@gmail.com</a>
-          <a href="tel:01501587081" class="contact-link"><div class="contact-link-icon">T</div>015 0158 7081</a>
-          <a href="https://linkedin.com/in/mohamedmahmoudsamy" target="_blank" class="contact-link"><div class="contact-link-icon">in</div>linkedin.com/in/mohamedmahmoudsamy</a>
-          <a href="cv.pdf" target="_blank" class="contact-link"><div class="contact-link-icon">CV</div>Download CV (PDF)</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <span>&copy; 2026 Mohamed Mahmoud Samy</span>
-    <span>Mechatronics Engineering &middot; Ain Shams University</span>
-  </footer>
-</div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.carousel').forEach(function (carousel) {
-    var track = carousel.querySelector('.carousel-track');
-    var imgs = Array.from(track.querySelectorAll('.carousel-img'));
-    var dotsContainer = carousel.querySelector('.carousel-dots');
-    var prevBtn = carousel.querySelector('.carousel-prev');
-    var nextBtn = carousel.querySelector('.carousel-next');
-    var current = 0;
-    if (imgs.length <= 1) return;
-    carousel.classList.add('has-multiple');
-    imgs.forEach(function (_, i) {
-      var dot = document.createElement('button');
-      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-      dot.setAttribute('aria-label', 'Image ' + (i + 1));
-      dotsContainer.appendChild(dot);
-      dot.addEventListener('click', function () { show(i); });
-    });
-    var dots = dotsContainer.querySelectorAll('.carousel-dot');
-    function show(n) {
-      imgs[current].classList.remove('active');
-      dots[current].classList.remove('active');
-      current = ((n % imgs.length) + imgs.length) % imgs.length;
-      imgs[current].classList.add('active');
-      dots[current].classList.add('active');
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohamed Mahmoud Samy - Portfolio</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
     }
-    prevBtn.addEventListener('click', function () { show(current - 1); });
-    nextBtn.addEventListener('click', function () { show(current + 1); });
-  });
-});
-</script>
+
+    :root {
+      --bg: #0a0a0a;
+      --bg3: #1a1a1a;
+      --accent: #e8ff6b;
+      --accent2: #6bffd4;
+      --text: #f0ede6;
+      --muted: #888880;
+      --border: rgba(255, 255, 255, 0.08);
+      --tag-bg: rgba(232, 255, 107, 0.1);
+      --tag-text: #c8df50
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: 'Syne', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.25rem
+    }
+
+    nav {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(12px);
+      z-index: 100
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem
+    }
+
+    .nav-logo {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-family: 'DM Mono', monospace;
+      flex-shrink: 0
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+      white-space: nowrap
+    }
+
+    .nav-links a:hover {
+      color: var(--text)
+    }
+
+    .nav-cv {
+      font-size: 11px !important;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #0a0a0a !important;
+      background: var(--accent);
+      padding: 0.35rem 0.85rem;
+      border-radius: 3px
+    }
+
+    .nav-cv:hover {
+      background: #d4e855 !important
+    }
+
+    .hero {
+      padding: 4rem 0 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: end
+    }
+
+    .hero-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -0.03em
+    }
+
+    .hero h1 span {
+      color: var(--accent)
+    }
+
+    .hero-desc {
+      margin-top: 1.25rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.8
+    }
+
+    .hero-stat {
+      border-top: 1px solid var(--border);
+      padding: 1rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline
+    }
+
+    .hero-stat-num {
+      font-size: 1.75rem;
+      font-weight: 700
+    }
+
+    .hero-stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: right
+    }
+
+    .cta-row {
+      margin-top: 2rem;
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.65rem 1.4rem;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 3px;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-family: 'Syne', sans-serif;
+      cursor: pointer;
+      white-space: nowrap
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0a0a0a;
+      border: none
+    }
+
+    .btn-primary:hover {
+      background: #d4e855
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border)
+    }
+
+    .btn-outline:hover {
+      border-color: var(--text)
+    }
+
+    .btn-cv {
+      background: transparent;
+      color: var(--accent2);
+      border: 1px solid rgba(107, 255, 212, 0.3)
+    }
+
+    .btn-cv:hover {
+      background: rgba(107, 255, 212, 0.06)
+    }
+
+    section {
+      padding: 3.5rem 0;
+      border-top: 1px solid var(--border)
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.25rem;
+      margin-bottom: 2.5rem
+    }
+
+    .section-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.15em
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2px;
+      background: var(--border)
+    }
+
+    .project-card {
+      background: var(--bg);
+      padding: 2.25rem 2rem;
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.15fr);
+      gap: 0 3rem;
+      align-items: center;
+      transition: background 0.25s
+    }
+
+    .project-card:hover {
+      background: var(--bg3)
+    }
+
+    .card-body {
+      min-width: 0
+    }
+
+    .card-media {
+      min-width: 0
+    }
+
+    .project-card.featured {
+      border-left: 3px solid var(--accent);
+      background: rgba(232, 255, 107, 0.018);
+      grid-template-rows: auto 1fr
+    }
+
+    .project-card.featured:hover {
+      background: rgba(232, 255, 107, 0.03)
+    }
+
+    .featured-banner {
+      grid-column: 1/-1;
+      margin: -2.25rem -2rem 2rem;
+      padding: 0.55rem 2rem;
+      background: rgba(232, 255, 107, 0.09);
+      border-bottom: 1px solid rgba(232, 255, 107, 0.18);
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 0.65rem
+    }
+
+    .fb-line {
+      display: block;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.35
+    }
+
+    .fb-line.grow {
+      flex: 1
+    }
+
+    .fb-line.short {
+      width: 14px;
+      flex: none
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+      gap: 0.5rem
+    }
+
+    .card-index,
+    .card-year {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--muted)
+    }
+
+    .card-badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      padding: 0.2rem 0.6rem;
+      background: rgba(232, 255, 107, 0.15);
+      color: var(--accent);
+      border-radius: 2px;
+      letter-spacing: 0.05em
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.65rem;
+      line-height: 1.25
+    }
+
+    .card-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.75
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 1.25rem
+    }
+
+    .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      padding: 0.2rem 0.55rem;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border-radius: 2px;
+      letter-spacing: 0.05em
+    }
+
+    .carousel {
+      position: relative
+    }
+
+    .carousel-track {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--bg3)
+    }
+
+    .carousel-img {
+      display: none;
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: contain
+    }
+
+    .carousel-img.active {
+      display: block
+    }
+
+    .carousel-btn {
+      display: none;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(10, 10, 10, 0.75);
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      width: 32px;
+      height: 32px;
+      border-radius: 2px;
+      cursor: pointer;
+      font-size: 20px;
+      line-height: 1;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      transition: background 0.18s;
+      font-family: inherit;
+      padding: 0
+    }
+
+    .carousel-btn:hover {
+      background: rgba(10, 10, 10, 0.96)
+    }
+
+    .carousel.has-multiple .carousel-btn {
+      display: flex
+    }
+
+    .carousel-prev {
+      left: 8px
+    }
+
+    .carousel-next {
+      right: 8px
+    }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 10px;
+      min-height: 16px
+    }
+
+    .carousel-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--muted);
+      cursor: pointer;
+      transition: background 0.18s;
+      border: none;
+      padding: 0;
+      display: block;
+      flex-shrink: 0
+    }
+
+    .carousel-dot.active {
+      background: var(--accent)
+    }
+
+    .carousel-caption {
+      margin-top: 8px;
+      min-height: 14px;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.03em;
+      color: var(--muted)
+    }
+
+    .group-tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin: 2.5rem 0 1.5rem
+    }
+
+    .group-tab {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.6rem 1.1rem;
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 400
+    }
+
+    .group-tab:hover {
+      color: var(--text);
+      border-color: var(--text)
+    }
+
+    .group-tab.active {
+      background: var(--accent);
+      color: #0a0a0a;
+      border-color: var(--accent)
+    }
+
+    .spotlight {
+      display: none
+    }
+
+    .spotlight.active {
+      display: block
+    }
+
+    .spotlight-project {
+      display: none
+    }
+
+    .spotlight-project.active {
+      display: grid
+    }
+
+    .spotlight-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem
+    }
+
+    .spotlight-nav-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 34px;
+      height: 34px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s;
+      font-family: inherit;
+      padding: 0
+    }
+
+    .spotlight-nav-btn:hover {
+      border-color: var(--text)
+    }
+
+    .spotlight-counter {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      min-width: 3.5em;
+      text-align: center
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border)
+    }
+
+    .skill-group {
+      background: var(--bg);
+      padding: 1.5rem
+    }
+
+    .skill-group-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 0.9rem
+    }
+
+    .skill-list {
+      list-style: none
+    }
+
+    .skill-list li {
+      font-size: 0.85rem;
+      color: var(--muted);
+      padding: 0.3rem 0;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.4
+    }
+
+    .skill-list li:last-child {
+      border-bottom: none
+    }
+
+    .contact-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem
+    }
+
+    .contact-headline {
+      font-size: clamp(1.6rem, 3vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em
+    }
+
+    .contact-headline span {
+      color: var(--accent)
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1rem
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s
+    }
+
+    .contact-link:hover {
+      color: var(--text)
+    }
+
+    .contact-link-icon {
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      color: var(--accent);
+      flex-shrink: 0
+    }
+
+    .availability {
+      margin-top: 2rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      color: var(--accent2)
+    }
+
+    footer {
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem
+    }
+
+    footer span {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--muted)
+    }
+
+    @media(max-width:640px) {
+      .container {
+        padding: 0 1rem
+      }
+
+      .nav-links a:not(.nav-cv) {
+        display: none
+      }
+
+      .nav-links {
+        gap: 0.75rem
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2.5rem 0 2rem
+      }
+
+      .hero-right {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 0
+      }
+
+      .hero-stat {
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 0.75rem 0.5rem;
+        border-top: 1px solid var(--border);
+        border-right: 1px solid var(--border)
+      }
+
+      .hero-right .hero-stat:last-child {
+        border-right: none
+      }
+
+      .hero-stat-num {
+        font-size: 1.4rem
+      }
+
+      .hero-stat-label {
+        font-size: 9px;
+        text-align: left
+      }
+
+      .cta-row {
+        gap: 0.5rem
+      }
+
+      .btn {
+        padding: 0.6rem 1rem;
+        font-size: 11px
+      }
+
+      .project-card {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1.25rem
+      }
+
+      .project-card.featured {
+        grid-template-rows: auto
+      }
+
+      .featured-banner {
+        margin: -1.25rem -1.25rem 1.5rem;
+        padding: 0.55rem 1.25rem
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .contact-row {
+        grid-template-columns: 1fr;
+        gap: 1.5rem
+      }
+
+      section {
+        padding: 2.5rem 0
+      }
+
+      .section-header {
+        margin-bottom: 1.75rem
+      }
+
+      .group-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 2rem 0 1.25rem;
+        padding-bottom: 4px;
+        padding-right: 1.5rem;
+        -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent 100%);
+        mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent 100%)
+      }
+
+      .group-tab {
+        flex-shrink: 0;
+        white-space: nowrap;
+        font-size: 10px;
+        padding: 0.5rem 0.85rem
+      }
+    }
+
+    @media(min-width:641px) and (max-width:900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 3.5rem 0 2.5rem
+      }
+
+      .hero-right {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr)
+      }
+
+      .hero-stat {
+        flex-direction: column;
+        gap: 0.25rem;
+        border-right: 1px solid var(--border);
+        padding: 0.75rem 1rem
+      }
+
+      .hero-right .hero-stat:last-child {
+        border-right: none
+      }
+
+      .project-card {
+        grid-template-columns: 1fr;
+        gap: 1.5rem
+      }
+
+      .project-card.featured {
+        grid-template-rows: auto
+      }
+
+      .featured-banner {
+        margin: -2.25rem -2rem 2rem
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .contact-row {
+        grid-template-columns: 1fr
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="container nav-inner">
+      <span class="nav-logo">MM_SAMY</span>
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+        <a href="cv.pdf" target="_blank" class="nav-cv">CV</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="hero">
+      <div>
+        <p class="hero-label">Mechatronics Engineer</p>
+        <h1>Mohamed<br>Mahmoud <span>Samy</span></h1>
+        <p class="hero-desc">Mechatronics engineer who builds the whole stack -- mechanical design, embedded
+          firmware, and the control loops that tie them together. Manipulators, autonomous vehicles, industrial
+          automation.</p>
+        <div class="cta-row">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-outline">Get in Touch</a>
+          <a href="cv.pdf" target="_blank" class="btn btn-cv">Download CV</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-stat"><span class="hero-stat-label">Projects Completed</span><span
+            class="hero-stat-num">10</span></div>
+        <div class="hero-stat"><span class="hero-stat-label">Internships &amp; Research</span><span
+            class="hero-stat-num">3</span></div>
+        <div class="hero-stat"><span class="hero-stat-label">Certifications</span><span class="hero-stat-num">11</span>
+        </div>
+      </div>
+    </div>
+
+    <section id="projects">
+      <div class="section-header"><span class="section-num">01</span>
+        <h2 class="section-title">Projects</h2>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-card featured">
+          <div class="featured-banner"><span class="fb-line short"></span>★&nbsp;Featured Project<span
+              class="fb-line grow"></span></div>
+          <div class="card-body">
+            <div class="card-meta"><span class="card-index">001</span><span class="card-badge">ASURT · Control
+                Subteam</span></div>
+            <h3 class="card-title">F1TENTH Autonomous Race Car — ASURT RoboRacer</h3>
+            <p class="card-desc">Team project building and racing a 1/10th-scale autonomous car for ASURT's F1TENTH
+              team, competing at the IFAC World Congress 2026 in Busan, South Korea. The stack (forked from ETH
+              Zürich's ForzaETH Race Stack) runs on ROS 2 with dedicated packages for perception, planning, control,
+              and state estimation — Cartographer for SLAM, a VESC motor controller interface, and trajectory
+              optimization for the racing line, all developed and tested first in the AutoDRIVE simulator before
+              moving to hardware.<br><br>My contributions: a Follow-the-Gap reactive navigation node (Python, ROS 2)
+              in the controller package, VESC 6 EDU motor controller integration with the steering servo, the
+              Dockerized development environment, and perception debugging — tracking down LiDAR false-positive
+              detections from wet-track reflections and solar blinding during on-track testing.</p>
+            <div class="card-tags"><span class="tag">ROS 2</span><span class="tag">Follow-the-Gap</span><span
+                class="tag">VESC Motor Control</span><span class="tag">LiDAR Perception</span><span
+                class="tag">AutoDRIVE Simulator</span><span class="tag">SLAM / Cartographer</span><span
+                class="tag">Docker</span></div>
+          </div>
+          <div class="card-media">
+            <div class="carousel">
+              <div class="carousel-track">
+                <img class="carousel-img active" src="Images/ASURT-F1TENTH-Car.jpeg" alt="F1TENTH race car — full build">
+                <video class="carousel-img" data-src="Videos/ASURT-F1TENTH-Car.mp4" data-caption="Autonomous lap" autoplay muted loop playsinline></video>
+                <button class="carousel-btn carousel-prev">&#8249;</button>
+                <button class="carousel-btn carousel-next">&#8250;</button>
+              </div>
+              <div class="carousel-dots"></div>
+                <div class="carousel-caption"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Group tabs: pick a group, then step through that group's projects one at a time below -->
+      <div class="group-tabs">
+        <button class="group-tab active" data-group="robotics" type="button">Robotics &amp; Control</button>
+        <button class="group-tab" data-group="automation" type="button">Automation &amp; Industrial Systems</button>
+        <button class="group-tab" data-group="embedded" type="button">Embedded &amp; Electronics</button>
+      </div>
+
+      <!-- ROBOTICS & CONTROL spotlight -->
+      <div class="spotlight active" data-group-panel="robotics">
+        <div class="projects-grid">
+
+          <div class="project-card spotlight-project active">
+            <div class="card-body">
+              <div class="card-meta"><span class="card-index">002</span><span class="card-badge">2nd Place · 6/6
+                  Tasks · Zero Penalties</span></div>
+              <h3 class="card-title">Modular Omni-Wheel Mobile Manipulator</h3>
+              <p class="card-desc">Built a fully integrated mobile manipulator for the Spring 2026 Mechatronics
+                Omni-Challenge at Ain Shams University, placing 2nd overall with a perfect task score 6 out of 6 tasks
+                completed, zero penalties.<br><br>The robot combines a holonomic omni-wheel base with a modular 5-DOF
+                arm and gripper, operating across two modes: manual wireless teleoperation for track navigation and a
+                fully autonomous pick-and-place phase using QR code detection for colour-coded cube sorting and delivery
+                to matching drop-off zones.<br><br>The system runs on three ESP32 controllers (base + arm + vision)
+                communicating over ESP-NOW, with the ESP32-CAM and quirc library handling QR decoding and a WebSocket
+                layer coordinating real-time inter-module state.</p>
+              <div class="card-tags"><span class="tag">ESP32 / ESP-NOW</span><span class="tag">QR Detection</span><span
+                  class="tag">WebSocket</span><span class="tag">Autonomous Pick &amp; Place</span><span
+                  class="tag">Omni-Wheel Drive</span><span class="tag">3-MCU Architecture</span><span
+                  class="tag">C++</span></div>
+            </div>
+            <div class="card-media">
+              <div class="carousel">
+                <div class="carousel-track">
+                  <img class="carousel-img active" src="Images/Omni-WheelMobile.png"
+                    alt="Omni-Wheel Mobile Manipulator - full build">
+                  <img class="carousel-img" data-src="Images/Omni-WheelMobile2.png" alt="Modular arm and gripper close-up">
+                  <img class="carousel-img" data-src="Images/Omni-WheelMobileResults.png" alt="Leaderboard - final competition results">
+                  <video class="carousel-img" data-src="Videos/OmniRobotRun.mp4" data-caption="Car in Action" autoplay muted loop playsinline></video>
+                  <button class="carousel-btn carousel-prev">&#8249;</button>
+                  <button class="carousel-btn carousel-next">&#8250;</button>
+                </div>
+                <div class="carousel-dots"></div>
+                <div class="carousel-caption"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card spotlight-project">
+            <div class="card-body">
+              <div class="card-meta"><span class="card-index">003</span><span class="card-badge">MCT344 · 2026</span>
+              </div>
+              <h3 class="card-title">5-DOF Robotic Arm — Computed-Torque Control</h3>
+              <p class="card-desc">Designed and simulated a full computed-torque controller for a 5-DOF rigid-body
+                manipulator in MATLAB/Simulink + Simscape, including trajectory planning and damped least-squares
+                Jacobian pseudoinverse IK with active singularity detection and avoidance.</p>
+              <div class="card-tags"><span class="tag">MATLAB / Simulink</span><span class="tag">Simscape</span><span
+                  class="tag">Computed-Torque Control</span><span class="tag">Jacobian IK</span><span
+                  class="tag">Trajectory Planning</span><span class="tag">Singularity Avoidance</span></div>
+            </div>
+            <div class="card-media">
+              <div class="carousel">
+                <div class="carousel-track">
+                  <img class="carousel-img active" data-src="Images/Robotics1.png" alt="5-DOF Robotic Arm Model">
+                  <img class="carousel-img" data-src="Images/Robotics2.png" alt="Control Architecture">
+                  <video class="carousel-img" data-src="Videos/RoboticsArmMoving.mp4" alt="Computed-Torque Motion" autoplay muted loop playsinline></video>
+                  <video class="carousel-img" data-src="Videos/PickAndPlace.mp4" alt="PID Motion" autoplay muted loop playsinline></video>
+                  <video class="carousel-img" data-src="Videos/GripperStandalone.mp4" alt="Simulated Gripper Motion" autoplay muted loop playsinline></video>
+                  <button class="carousel-btn carousel-prev">&#8249;</button>
+                  <button class="carousel-btn carousel-next">&#8250;</button>
+                </div>
+                <div class="carousel-dots"></div>
+                <div class="carousel-caption"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card spotlight-project">
+            <div class="card-body">
+              <div class="card-meta"><span class="card-index">004</span><span class="card-year">2024-2025</span></div>
+              <h3 class="card-title">Multi-Mode Object Transporting Robot</h3>
+              <p class="card-desc">Mobile robot with three navigation modes: line following + obstacle avoidance,
+                gesture control via IMU, and Bluetooth smartphone control. Custom PCB, mechanical gripper, and modular
+                C++ control software.</p>
+              <div class="card-tags"><span class="tag">C++</span><span class="tag">Robotics</span><span class="tag">PCB
+                  Design</span><span class="tag">Control Systems</span></div>
+            </div>
+            <div class="card-media">
+              <div class="carousel">
+                <div class="carousel-track">
+                  <img class="carousel-img active" data-src="Images/Multi-ModeCar.png" alt="Multi-mode robot">
+                  <button class="carousel-btn carousel-prev">&#8249;</button>
+                  <button class="carousel-btn carousel-next">&#8250;</button>
+                </div>
+                <div class="carousel-dots"></div>
+                <div class="carousel-caption"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="spotlight-nav">
+          <button class="spotlight-nav-btn spotlight-prev" type="button" aria-label="Previous project">&#8249;</button>
+          <span class="spotlight-counter">1 / 3</span>
+          <button class="spotlight-nav-btn spotlight-next" type="button" aria-label="Next project">&#8250;</button>
+        </div>
+      </div>
+
+      <!-- AUTOMATION & INDUSTRIAL SYSTEMS spotlight -->
+      <div class="spotlight" data-group-panel="automation" hidden>
+        <div class="projects-grid">
+
+          <div class="project-card spotlight-project active">
+            <div class="card-body">
+              <div class="card-meta"><span class="card-index">005</span><span class="card-badge">MCT312 · Fall
+                  2025</span></div>
+              <h3 class="card-title">Bottles Production Line - Industrial Automation</h3>
+              <p class="card-desc">Team project (6-person, MCT312 Industrial Automation). Built a fully automated bottle
+                production line simulated in Factory I/O and controlled via Siemens TIA Portal (S7-1500 PLC) — bottle
+                feeding, filling, length-based sorting, independent batching/palletizing for two bottle sizes, and a
+                supervisory HMI.</p>
+              <div class="card-tags"><span class="tag">TIA Portal</span><span class="tag">S7-1500 PLC</span><span
+                  class="tag">Ladder Logic</span><span class="tag">Factory I/O</span><span class="tag">HMI /
+                  SCADA</span><span class="tag">Industrial Automation</span></div>
+            </div>
+            <div class="card-media">
+              <div class="carousel">
+                <div class="carousel-track">
+                  <img class="carousel-img active" data-src="Images/PLC-Ladder.png" alt="Ladder Diagram Snippet">
+                  <img class="carousel-img" data-src="Images/PLC-HMI.png" alt="HMI Screenview">
+                  <video class="carousel-img" data-src="Videos/Factory.mp4" alt="Factory Simulation" autoplay muted loop playsinline></video>
+                  <button class="carousel-btn carousel-prev">&#8249;</button>
+                  <button class="carousel-btn carousel-next">&#8250;</button>
+                </div>
+                <div class="carousel-dots"></div>
+                <div class="carousel-caption"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card spotlight-project">
+            <div class="card-body">
+              <div class="card-meta"><span class="card-index">006</span><span class="card-year">2025</span></div>
+              <h3 class="card-title">Electropneumatic Pick-and-Place System</h3>
+              <p class="card-desc">Built a 2-DOF automation cell simulating real industrial pick-and-place. Pneumatic
+                actuators handle motion; sensor feedback drives sequencing; Arduino manages actuation and safety logic.
+              </p>
+              <div class="card-tags"><span class="tag">Industrial Automation</span><span
+                  class="tag">Mechatronics</span><span class="tag">Arduino</span></div>
+            </div>
+            <div class="card-media">
+              <div class="carousel">
+                <div class="carousel-track">
+                  <img class="carousel-img active" data-src="Images/PickandPlacePneumatic.png"
+                    alt="Pick and Place Pneumatic System">
+                  <button class="carousel-btn carousel-prev">&#8249;</button>
+                  <button class="carousel-btn carousel-next">&#8250;</button>
+                </div>
+                <div class="carousel-dots"></div>
+                <div class="carousel-caption"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card spotlight-project">
+            <div class="card-body">
+              <div class="card-meta"><span class="card-index">007</span><span class="card-year">2025</span></div>
+              <h3 class="card-title">Portable Electrical Control Panel</h3>
+              <p class="card-desc">Wired a portable industrial panel to execute a pick-and-place sequence for a
+                simulated robotic arm. Full relay logic, E-stop, protection circuits, and wiring standards — contactors,
+                breakers, relays, terminals, and indicators throughout.</p>
+              <div class="card-tags"><span class="tag">Relay Logic</span><span class="tag">Industrial Wiring</span><span
+                  class="tag">PLC</span></div>
+            </div>
+            <div class="card-media">
+              <div class="carousel">
+                <div class="carousel-track">
+                  <img class="carousel-img active" data-src="Images/ElectricalControlPanel.png"
+                    alt="Electrical control panel">
+                  <button class="carousel-btn carousel-prev">&#8249;</button>
+                  <button class="carousel-btn carousel-next">&#8250;</button>
+                </div>
+                <div class="carousel-dots"></div>
+                <div class="carousel-caption"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="spotlight-nav">
+          <button class="spotlight-nav-btn spotlight-prev" type="button" aria-label="Previous project">&#8249;</button>
+          <span class="spotlight-counter">1 / 3</span>
+          <button class="spotlight-nav-btn spotlight-next" type="button" aria-label="Next project">&#8250;</button>
+        </div>
+      </div>
+
+      <!-- EMBEDDED & ELECTRONICS spotlight -->
+      <div class="spotlight" data-group-panel="embedded" hidden>
+        <div class="projects-grid">
+
+          <div class="project-card spotlight-project active">
+            <div class="card-body">
+              <div class="card-meta"><span class="card-index">008</span><span class="card-year">2025</span></div>
+              <h3 class="card-title">Smart Laptop Cooling Pad</h3>
+              <p class="card-desc">Designed a cooling pad with auto/manual fan control via Arduino + LM35 sensor,
+                Bluetooth app for real-time monitoring, PCB design with trace width calculations, and temperature
+                logging with emergency stop.</p>
+              <div class="card-tags"><span class="tag">PCB Design</span><span class="tag">Arduino</span><span
+                  class="tag">Control Systems</span></div>
+            </div>
+            <div class="card-media">
+              <div class="carousel">
+                <div class="carousel-track">
+                  <img class="carousel-img active" data-src="Images/CoolingPad.png" alt="Smart laptop cooling pad">
+                  <button class="carousel-btn carousel-prev">&#8249;</button>
+                  <button class="carousel-btn carousel-next">&#8250;</button>
+                </div>
+                <div class="carousel-dots"></div>
+                <div class="carousel-caption"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card spotlight-project">
+            <div class="card-body">
+              <div class="card-meta"><span class="card-index">009</span><span class="card-year">2025-2026</span></div>
+              <h3 class="card-title">Air-Powered Vehicle</h3>
+              <p class="card-desc">Designed and manufactured a vehicle propelled solely by compressed air. Converted
+                stored pressure energy into kinetic energy using a pneumatic drill motor and sprocket-chain torque
+                transfer. Integrated electromagnetic braking and wireless control with 20+ metre range — within strict
+                no-electrical-drive constraints.</p>
+              <div class="card-tags"><span class="tag">Electro-pneumatics</span><span class="tag">Machine
+                  Design</span><span class="tag">Stress Analysis</span><span class="tag">Electromechanical</span></div>
+            </div>
+            <div class="card-media">
+              <div class="carousel">
+                <div class="carousel-track">
+                  <img class="carousel-img active" data-src="Images/AirPoweredVehicle.png" alt="Air-powered vehicle">
+                  <button class="carousel-btn carousel-prev">&#8249;</button>
+                  <button class="carousel-btn carousel-next">&#8250;</button>
+                </div>
+                <div class="carousel-dots"></div>
+                <div class="carousel-caption"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card spotlight-project">
+            <div class="card-body">
+              <div class="card-meta"><span class="card-index">010</span><span class="card-year">2024-2025</span></div>
+              <h3 class="card-title">3-bit Arithmetic Logic Unit</h3>
+              <p class="card-desc">Implemented a 3-bit ALU in hardware — addition, subtraction, multiplication, AND/OR,
+                complement, and increment. Built with full adders, gates, and multiplexers. Simulated in Proteus,
+                validated on hardware with 7-segment display output.</p>
+              <div class="card-tags"><span class="tag">Logic Design</span><span class="tag">Proteus</span><span
+                  class="tag">Digital Circuits</span></div>
+            </div>
+            <div class="card-media">
+              <div class="carousel">
+                <div class="carousel-track">
+                  <img class="carousel-img active" data-src="Images/3bitALU.png" alt="ALU Breadboard">
+                  <button class="carousel-btn carousel-prev">&#8249;</button>
+                  <button class="carousel-btn carousel-next">&#8250;</button>
+                </div>
+                <div class="carousel-dots"></div>
+                <div class="carousel-caption"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="spotlight-nav">
+          <button class="spotlight-nav-btn spotlight-prev" type="button" aria-label="Previous project">&#8249;</button>
+          <span class="spotlight-counter">1 / 3</span>
+          <button class="spotlight-nav-btn spotlight-next" type="button" aria-label="Next project">&#8250;</button>
+        </div>
+      </div>
+
+    </section>
+
+    <section id="skills">
+      <div class="section-header"><span class="section-num">02</span>
+        <h2 class="section-title">Skills</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <p class="skill-group-title">Embedded &amp; Control</p>
+          <ul class="skill-list">
+            <li>ESP32 / STM32</li>
+            <li>FreeRTOS</li>
+            <li>I2C / UART / SPI</li>
+            <li>Control Systems</li>
+            <li>PLC</li>
+            <li>Electro-Pneumatics</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-title">Robotics &amp; Simulation</p>
+          <ul class="skill-list">
+            <li>ROS2 / MoveIt2</li>
+            <li>Isaac Sim / AutoDRIVE</li>
+            <li>Simscape / Gazebo</li>
+            <li>Trajectory Planning</li>
+            <li>Jacobian IK</li>
+            <li>MPC</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-title">Electronics &amp; HW</p>
+          <ul class="skill-list">
+            <li>PCB Design</li>
+            <li>Circuit Simulation</li>
+            <li>Sensors &amp; Actuators</li>
+            <li>FPGA / VHDL</li>
+            <li>Industrial Components</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-title">Mechanical</p>
+          <ul class="skill-list">
+            <li>SolidWorks</li>
+            <li>CAD</li>
+            <li>Mechanical Drawings</li>
+            <li>Power Transmission</li>
+            <li>Stress Analysis</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-title">Programming &amp; HDL</p>
+          <ul class="skill-list">
+            <li>C / C++</li>
+            <li>Python</li>
+            <li>MATLAB / Simulink</li>
+            <li>VHDL</li>
+            <li>Java</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-title">Tools</p>
+          <ul class="skill-list">
+            <li>Git</li>
+            <li>Linux / Ubuntu</li>
+            <li>RViz</li>
+            <li>Proteus</li>
+            <li>WebSockets</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-header"><span class="section-num">03</span>
+        <h2 class="section-title">Contact</h2>
+      </div>
+      <div class="contact-row">
+        <div>
+          <h3 class="contact-headline">Got a robot<br>problem? <span>Let's fix it.</span></h3>
+          <p class="availability">Open to internships &amp; research collaborations — email or LinkedIn works.</p>
+        </div>
+        <div>
+          <div class="contact-links">
+            <a href="mailto:mohamednessim15@gmail.com" class="contact-link">
+              <div class="contact-link-icon">@</div>mohamednessim15@gmail.com
+            </a>
+            <a href="tel:01501587081" class="contact-link">
+              <div class="contact-link-icon">T</div>015 0158 7081
+            </a>
+            <a href="https://linkedin.com/in/mohamedmahmoudsamy" target="_blank" class="contact-link">
+              <div class="contact-link-icon">in</div>linkedin.com/in/mohamedmahmoudsamy
+            </a>
+            <a href="cv.pdf" target="_blank" class="contact-link">
+              <div class="contact-link-icon">CV</div>Download CV (PDF)
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>&copy; 2026 Mohamed Mahmoud Samy</span>
+      <span>Mechatronics Engineering &middot; Ain Shams University</span>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+      function loadMedia(el) {
+        if (!el) return;
+        if (el.dataset && el.dataset.src) {
+          el.src = el.dataset.src;
+          delete el.dataset.src;
+        }
+        if (el.tagName === 'VIDEO') {
+          var playPromise = el.play();
+          if (playPromise && playPromise.catch) playPromise.catch(function () {});
+        }
+      }
+
+      document.querySelectorAll('.carousel').forEach(function (carousel) {
+        var track = carousel.querySelector('.carousel-track');
+        var imgs = Array.from(track.querySelectorAll('.carousel-img'));
+        var dotsContainer = carousel.querySelector('.carousel-dots');
+        var captionEl = carousel.querySelector('.carousel-caption');
+        var prevBtn = carousel.querySelector('.carousel-prev');
+        var nextBtn = carousel.querySelector('.carousel-next');
+        var current = 0;
+        function updateCaption() {
+          if (!captionEl) return;
+          var active = imgs[current];
+          captionEl.textContent = (active && (active.dataset.caption || active.getAttribute('alt'))) || '';
+        }
+        updateCaption();
+        if (imgs.length <= 1) return;
+        carousel.classList.add('has-multiple');
+        imgs.forEach(function (_, i) {
+          var dot = document.createElement('button');
+          dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+          dot.setAttribute('aria-label', 'Image ' + (i + 1));
+          dotsContainer.appendChild(dot);
+          dot.addEventListener('click', function () { show(i); });
+        });
+        var dots = dotsContainer.querySelectorAll('.carousel-dot');
+        function show(n) {
+          imgs[current].classList.remove('active');
+          dots[current].classList.remove('active');
+          current = ((n % imgs.length) + imgs.length) % imgs.length;
+          imgs[current].classList.add('active');
+          dots[current].classList.add('active');
+          loadMedia(imgs[current]);
+          updateCaption();
+        }
+        prevBtn.addEventListener('click', function () { show(current - 1); });
+        nextBtn.addEventListener('click', function () { show(current + 1); });
+      });
+
+      function activateProjectMedia(projectEl) {
+        if (!projectEl) return;
+        loadMedia(projectEl.querySelector('.carousel-img.active'));
+      }
+
+      var tabs = Array.from(document.querySelectorAll('.group-tab'));
+      var panels = Array.from(document.querySelectorAll('.spotlight'));
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          tabs.forEach(function (t) { t.classList.toggle('active', t === tab); });
+          panels.forEach(function (panel) {
+            var match = panel.dataset.groupPanel === tab.dataset.group;
+            panel.classList.toggle('active', match);
+            panel.hidden = !match;
+            if (match) activateProjectMedia(panel.querySelector('.spotlight-project.active'));
+          });
+        });
+      });
+
+      panels.forEach(function (panel) {
+        var projects = Array.from(panel.querySelectorAll('.spotlight-project'));
+        var counter = panel.querySelector('.spotlight-counter');
+        var prevBtn = panel.querySelector('.spotlight-prev');
+        var nextBtn = panel.querySelector('.spotlight-next');
+        var current = projects.findIndex(function (p) { return p.classList.contains('active'); });
+        if (current < 0) current = 0;
+        function updateCounter() {
+          if (counter) counter.textContent = (current + 1) + ' / ' + projects.length;
+        }
+        function show(n) {
+          projects[current].classList.remove('active');
+          current = ((n % projects.length) + projects.length) % projects.length;
+          projects[current].classList.add('active');
+          updateCounter();
+          activateProjectMedia(projects[current]);
+        }
+        if (projects.length <= 1) {
+          if (prevBtn) prevBtn.style.display = 'none';
+          if (nextBtn) nextBtn.style.display = 'none';
+        } else {
+          prevBtn.addEventListener('click', function () { show(current - 1); });
+          nextBtn.addEventListener('click', function () { show(current + 1); });
+        }
+        updateCounter();
+      });
+
+      activateProjectMedia(document.querySelector('.spotlight.active .spotlight-project.active'));
+    });
+  </script>
 </body>
+
 </html>
