@@ -833,6 +833,35 @@
       .contact-row {
         grid-template-columns: 1fr
       }
+
+      .preload-badge {
+        font-size: 10px;
+        padding: 0.4rem 0.7rem;
+        bottom: 0.75rem;
+        right: 0.75rem
+      }
+    }
+
+    .preload-badge {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      padding: 0.5rem 0.9rem;
+      border-radius: 3px;
+      z-index: 500;
+      opacity: 0.85;
+      transition: opacity 0.5s ease;
+      pointer-events: none
+    }
+
+    .preload-badge-hide {
+      opacity: 0
     }
   </style>
 </head>
@@ -1400,6 +1429,61 @@
       });
 
       activateProjectMedia(document.querySelector('.spotlight.active .spotlight-project.active'));
+
+      // Background preload: once the visible slide is up, quietly fetch every other
+      // project's images/videos into memory (as blob URLs) so switching tabs/projects
+      // later is instant instead of waiting on each video to download. Doesn't block
+      // or delay the initial page — it starts after a short pause and runs a couple
+      // of downloads at a time in the background.
+      function preloadRemainingMedia() {
+        var targets = Array.from(document.querySelectorAll('.carousel-img[data-src]'));
+        var total = targets.length;
+        if (!total) return;
+        var loaded = 0;
+        var badge = document.createElement('div');
+        badge.className = 'preload-badge';
+        badge.textContent = 'Loading gallery… 0%';
+        document.body.appendChild(badge);
+
+        function updateBadge() {
+          if (loaded >= total) {
+            badge.textContent = 'Gallery ready';
+            setTimeout(function () {
+              badge.classList.add('preload-badge-hide');
+              setTimeout(function () { badge.remove(); }, 500);
+            }, 900);
+            return;
+          }
+          badge.textContent = 'Loading gallery… ' + Math.round((loaded / total) * 100) + '%';
+        }
+
+        var CONCURRENCY = 2;
+        var idx = 0;
+        function next() {
+          if (idx >= targets.length) return;
+          var el = targets[idx++];
+          var url = el.dataset.src;
+          fetch(url)
+            .then(function (res) { return res.blob(); })
+            .then(function (blob) {
+              var objectUrl = URL.createObjectURL(blob);
+              if (el.dataset.src) {
+                el.dataset.src = objectUrl;
+              } else {
+                URL.revokeObjectURL(objectUrl); // already navigated to and loaded from the network directly
+              }
+            })
+            .catch(function () { /* leave the original path — it'll just load from network when visited */ })
+            .then(function () {
+              loaded++;
+              updateBadge();
+              next();
+            });
+        }
+        for (var i = 0; i < CONCURRENCY; i++) next();
+      }
+
+      setTimeout(preloadRemainingMedia, 400);
     });
   </script>
 </body>
